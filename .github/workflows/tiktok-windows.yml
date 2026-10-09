@@ -1,0 +1,56 @@
+name: Build TikTok Creator Lookup EXE
+on:
+  push:
+    branches: [build/tiktok-creator-lookup]
+    paths:
+      - .github/workflows/tiktok-windows.yml
+      - TikTokCreatorLookup-BuildSource.zip
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Extract source
+        run: Expand-Archive TikTokCreatorLookup-BuildSource.zip -DestinationPath source
+      - name: Install dependencies
+        working-directory: source/TikTokCreatorLookup
+        run: python -m pip install -r requirements.txt
+      - name: Test import and export
+        working-directory: source/TikTokCreatorLookup
+        run: python test_core.py
+      - name: Build Windows executable
+        working-directory: source/TikTokCreatorLookup
+        run: python -m PyInstaller --noconfirm --clean --onedir --windowed --collect-all playwright --name TikTokCreatorLookup app.py
+      - name: Verify packaged executable
+        working-directory: source/TikTokCreatorLookup
+        run: |
+          $p = Start-Process -FilePath "dist/TikTokCreatorLookup/TikTokCreatorLookup.exe" -ArgumentList "--smoke-test" -PassThru
+          if (-not $p.WaitForExit(60000)) { $p.Kill(); throw "EXE smoke test timed out" }
+          if ($p.ExitCode -ne 0) { throw "EXE smoke test failed: $($p.ExitCode)" }
+      - name: Add usage guide
+        working-directory: source/TikTokCreatorLookup
+        run: |
+          @"
+          TikTok Creator Lookup - Windows 10/11 x64
+          Extract the ENTIRE ZIP to a folder, then run TikTokCreatorLookup.exe.
+          Python is bundled. Microsoft Edge must be installed.
+          Import XLSX, start public profile lookup, then export XLSX.
+          Complete any verification manually in the browser, then click Continue.
+          Account ID means @username. Abbreviated follower counts are estimates.
+          Failed lookups stay blank. Public-site availability is not guaranteed.
+          Build passed parser/export tests and packaged startup smoke test.
+          Live TikTok querying has not been verified in this build environment.
+          "@ | Set-Content -Encoding UTF8 dist/TikTokCreatorLookup/START-HERE.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TikTokCreatorLookup-Windows-x64
+          path: source/TikTokCreatorLookup/dist/TikTokCreatorLookup/
+          retention-days: 14
+          if-no-files-found: error
