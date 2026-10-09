@@ -1,0 +1,2957 @@
+{
+  "id": "e3f2b845-8f2c-4b5a-9caf-eac1029d3e7e",
+  "revision": 0,
+  "last_node_id": 187,
+  "last_link_id": 379,
+  "nodes": [
+    {
+      "id": 119,
+      "type": "VAELoader",
+      "pos": [
+        -1490,
+        5270
+      ],
+      "size": [
+        640,
+        70
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            251,
+            273
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "minimax_h3_video_vae_fp16.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_fp16.safetensors"
+      ]
+    },
+    {
+      "id": 123,
+      "type": "KSamplerSelect",
+      "pos": [
+        -260,
+        5190
+      ],
+      "size": [
+        370,
+        70
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "采样器",
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            255
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "res_multistep"
+      ]
+    },
+    {
+      "id": 126,
+      "type": "BasicGuider",
+      "pos": [
+        -260,
+        5080
+      ],
+      "size": [
+        360,
+        60
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 363
+        },
+        {
+          "label": "条件",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 270
+        }
+      ],
+      "outputs": [
+        {
+          "label": "引导",
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            254
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 129,
+      "type": "RandomNoise",
+      "pos": [
+        -260,
+        4940
+      ],
+      "size": [
+        360,
+        90
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise_seed",
+          "type": "INT",
+          "widget": {
+            "name": "noise_seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "噪波生成",
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            253
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        901518624601014,
+        "randomize"
+      ]
+    },
+    {
+      "id": 117,
+      "type": "MarkdownNote",
+      "pos": [
+        -2500,
+        4850
+      ],
+      "size": [
+        440,
+        740
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note: Model Links",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "## Model Links\n[🤗 Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3)\n\n**vae**\n\n- [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors)\n- [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors)\n\n**diffusion_models**\n\n- [minimax_h3_ref2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors)\n\n**text_encoders**\n\n- [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 vae/\n│   │   ├── minimax_h3_video_vae_fp16.safetensors\n│   │   └── minimax_h3_audio_vae_fp32.safetensors\n│   ├── 📂 diffusion_models/\n│   │   └── minimax_h3_ref2va_pruned_int8_convrot.safetensors\n│   └── 📂 text_encoders/\n│       └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 120,
+      "type": "VAELoader",
+      "pos": [
+        -1513.476806640625,
+        5574.38818359375
+      ],
+      "size": [
+        650,
+        70
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            250,
+            274
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "minimax_h3_audio_vae_fp32.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ]
+    },
+    {
+      "id": 124,
+      "type": "BasicScheduler",
+      "pos": [
+        -262.8273620605469,
+        5312.82763671875
+      ],
+      "size": [
+        370,
+        130
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 364
+        },
+        {
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Sigmas",
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            256
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1
+      ]
+    },
+    {
+      "id": 144,
+      "type": "LayerUtility: ImageScaleByAspectRatio V2",
+      "pos": [
+        -326.3109130859375,
+        6086.470703125
+      ],
+      "size": [
+        317.0865173339844,
+        341.61456298828125
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 287
+        },
+        {
+          "label": "遮罩",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK"
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "proportional_width",
+          "name": "proportional_width",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_width"
+          }
+        },
+        {
+          "label": "proportional_height",
+          "name": "proportional_height",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_height"
+          }
+        },
+        {
+          "label": "fit",
+          "name": "fit",
+          "type": "COMBO",
+          "widget": {
+            "name": "fit"
+          }
+        },
+        {
+          "label": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          }
+        },
+        {
+          "label": "round_to_multiple",
+          "name": "round_to_multiple",
+          "type": "COMBO",
+          "widget": {
+            "name": "round_to_multiple"
+          }
+        },
+        {
+          "label": "scale_to_side",
+          "name": "scale_to_side",
+          "type": "COMBO",
+          "widget": {
+            "name": "scale_to_side"
+          }
+        },
+        {
+          "label": "scale_to_length",
+          "name": "scale_to_length",
+          "type": "INT",
+          "widget": {
+            "name": "scale_to_length"
+          }
+        },
+        {
+          "label": "background_color",
+          "name": "background_color",
+          "type": "STRING",
+          "widget": {
+            "name": "background_color"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            288
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "mask",
+          "type": "MASK"
+        },
+        {
+          "label": "原始大小",
+          "name": "original_size",
+          "type": "BOX"
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "links": [
+            285
+          ]
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "links": [
+            286
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "1.0.90",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "original",
+        1,
+        1,
+        "letterbox",
+        "lanczos",
+        "32",
+        "longest",
+        269,
+        "#000000"
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 140,
+      "type": "MarkdownNote",
+      "pos": [
+        -1890,
+        5830
+      ],
+      "size": [
+        300,
+        520
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note: Size Settings Reference",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "| megapixels | Aspect | Output (multiple=32) |\n|---|---|---|\n| 0.2 | 16:9 | 608 x 352 |\n| 0.3 | 16:9 | 736 x 416 |\n| 0.4 | 16:9 | 864 x 480 |\n| 0.5 | 16:9 | 960 x 544 |\n| 0.6 | 16:9 | 1056 x 608 |\n| 0.7 | 16:9 | 1152 x 640 |\n| 0.8 | 16:9 | 1216 x 672 |\n| 0.9 | 16:9 | 1280 x 736 |\n| 0.98 | 16:9 | 1344 x 768 |\n| 1.0 | 16:9 | 1376 x 768 |\n| 1.2 | 16:9 | 1504 x 832 |\n| 1.5 | 16:9 | 1664 x 928 |\n| 1.8 | 16:9 | 1824 x 1024 |\n| 2.0 | 16:9 | 1920 x 1088 |\n"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 116,
+      "type": "MarkdownNote",
+      "pos": [
+        -2030,
+        4850
+      ],
+      "size": [
+        450,
+        889.6875
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note: MiniMax H3",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "## MiniMax H3\n\n[MiniMax H3](https://www.minimax.io/blog/minimax-h3) is MiniMax's general-purpose, omni-modal generation model. It jointly understands text, image, video, and audio, and generates video with **native stereo audio**: voice, sound effects, and music are modeled jointly in a single forward pass, not layered on afterward. Output is up to 2K resolution, 24fps, and up to about 15 seconds.\n\n## ComfyUI links\n- [ComfyUI#15224](https://github.com/Comfy-Org/ComfyUI/pull/15224)\n- [🤗 Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3)\n\n## About this workflow\n\nThis template runs the **reference-to-video (ref2va)** task using the `MiniMaxH3ReferenceToVideo` node. It takes any mix of reference images, videos, and standalone audio, and weaves them into the generation to lock in a character's identity, a style, a motion, a camera move, or a voice.\n\n**Key inputs**\n\n- **ref_images / ref_videos / ref_video_audios / ref_audios**: up to 9 reference images, 3 reference videos (each may carry its own paired soundtrack), and 3 standalone reference audio clips\n- **prompt**: reference the inputs by tag, in the exact order they were connected, for example `<Picture 1>`, `<Video 1>`, `<Audio 1>`, then describe the target scene, motion, and audio\n- **ref_image_size**: `match` scales references down to the generation's resolution (faster); `max` keeps up to a 2048px short edge for stronger identity fidelity, at the cost of speed since reference tokens ride along every sampling step\n- **width / height**: set via Resolution Selector.\n- **duration (seconds)**: converted to a valid frame `length` by the Math Expression node\n\n**Sampling and decode**\n\n- Sampler: `res_multistep`. `beta` or `normal` scheduler tends to outperform `simple` for reference-heavy prompts like this one\n- The sampler's joint audio+video `LATENT` output feeds directly into both `VAEDecode` (video, `minimax_h3_video_vae_fp16`) and `VAEDecodeAudio` (audio, `minimax_h3_audio_vae_fp32`); each decode node automatically pulls its own half out of the packed latent. `CreateVideo` then muxes the two into a single MP4 with synced sound\n- The diffusion model here is `minimax_h3_ref2va_pruned_int8_convrot.safetensors`, a different set of weights from the `fl2va` model used by the t2v/i2v templates\n\nRef2va's output is very sensitive to prompt wording; matching the reference tags precisely and being explicit about which reference drives which part of the shot tends to work best."
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 175,
+      "type": "LoadImage",
+      "pos": [
+        336.4406433105469,
+        5680.06884765625
+      ],
+      "size": [
+        290,
+        330
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 7,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            331
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "87db664cf55ec66e7d99a8354107b97feed81df59e17d9e78fc3d2d6a326ae6e.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 131,
+      "type": "ComfyMathExpression",
+      "pos": [
+        -715.1514892578125,
+        5629.45068359375
+      ],
+      "size": [
+        225,
+        74
+      ],
+      "flags": {
+        "collapsed": true,
+        "pinned": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "values.a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 261
+        },
+        {
+          "label": "values.b",
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN"
+        },
+        {
+          "label": "expression",
+          "name": "expression",
+          "type": "STRING",
+          "widget": {
+            "name": "expression"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "FLOAT",
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            275
+          ]
+        },
+        {
+          "label": "BOOL",
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "max(5, round(a * 24)) + (5 - (max(5, round(a * 24)) % 17)) % 17"
+      ]
+    },
+    {
+      "id": 146,
+      "type": "SetNode",
+      "pos": [
+        39.88032531738281,
+        6365.02001953125
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": false,
+        "pinned": true
+      },
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "link": 286
+        }
+      ],
+      "outputs": [
+        {
+          "label": "输出",
+          "name": "INT",
+          "type": "INT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SetNode",
+        "aux_id": "SetNode",
+        "previousName": "高（1）",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "高（1）"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 136,
+      "type": "MiniMaxH3ReferenceToVideo",
+      "pos": [
+        -750,
+        4940
+      ],
+      "size": [
+        410,
+        444
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 337
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 273
+        },
+        {
+          "label": "audio_vae",
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 274
+        },
+        {
+          "label": "ref_images.ref_image_0",
+          "name": "ref_images.ref_image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 282
+        },
+        {
+          "label": "ref_images.ref_image_1",
+          "name": "ref_images.ref_image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 283
+        },
+        {
+          "label": "ref_images.ref_image_2",
+          "name": "ref_images.ref_image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 331
+        },
+        {
+          "label": "ref_images.ref_image_3",
+          "name": "ref_images.ref_image_3",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "ref_videos.ref_video_0",
+          "name": "ref_videos.ref_video_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 288
+        },
+        {
+          "label": "ref_videos.ref_video_1",
+          "name": "ref_videos.ref_video_1",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "ref_video_audios.ref_video_audio_0",
+          "name": "ref_video_audios.ref_video_audio_0",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "ref_audios.ref_audio_0",
+          "name": "ref_audios.ref_audio_0",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 333
+        },
+        {
+          "label": "ref_audios.ref_audio_1",
+          "name": "ref_audios.ref_audio_1",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 379
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 276
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 277
+        },
+        {
+          "label": "length",
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 275
+        },
+        {
+          "label": "ref_image_size",
+          "name": "ref_image_size",
+          "type": "COMBO",
+          "widget": {
+            "name": "ref_image_size"
+          }
+        },
+        {
+          "label": "ref_video_audios.ref_video_audio_1",
+          "name": "ref_video_audios.ref_video_audio_1",
+          "shape": 7,
+          "type": "AUDIO"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            270
+          ]
+        },
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            271
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ReferenceToVideo",
+        "widget_ue_connectable": {
+          "width": true,
+          "length": true,
+          "prompt": true,
+          "height": true
+        }
+      },
+      "widgets_values": [
+        "",
+        1344,
+        768,
+        124,
+        "match"
+      ]
+    },
+    {
+      "id": 171,
+      "type": "PathchSageAttentionKJ",
+      "pos": [
+        -1464.7060546875,
+        4687.38916015625
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 367
+        },
+        {
+          "label": "sage_attention",
+          "name": "sage_attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "sage_attention"
+          }
+        },
+        {
+          "label": "allow_compile",
+          "name": "allow_compile",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "allow_compile"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            318
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PathchSageAttentionKJ",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "auto",
+        false
+      ]
+    },
+    {
+      "id": 127,
+      "type": "UNETLoader",
+      "pos": [
+        -1499.1226806640625,
+        4909.2119140625
+      ],
+      "size": [
+        640,
+        90
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            361
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+            "directory": "diffusion_models",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 170,
+      "type": "EasyCache",
+      "pos": [
+        -1094.7056884765625,
+        4677.38916015625
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 318
+        },
+        {
+          "label": "reuse_threshold",
+          "name": "reuse_threshold",
+          "type": "FLOAT",
+          "widget": {
+            "name": "reuse_threshold"
+          }
+        },
+        {
+          "label": "start_percent",
+          "name": "start_percent",
+          "type": "FLOAT",
+          "widget": {
+            "name": "start_percent"
+          }
+        },
+        {
+          "label": "end_percent",
+          "name": "end_percent",
+          "type": "FLOAT",
+          "widget": {
+            "name": "end_percent"
+          }
+        },
+        {
+          "label": "verbose",
+          "name": "verbose",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "verbose"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            363,
+            364
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EasyCache",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        0.20000000000000004,
+        0.15,
+        0.9000000000000001,
+        false
+      ]
+    },
+    {
+      "id": 174,
+      "type": "LoraLoader",
+      "pos": [
+        -1493.9486083984375,
+        4442.4990234375
+      ],
+      "size": [
+        320,
+        130
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL"
+        },
+        {
+          "label": "CLIP",
+          "name": "clip",
+          "type": "CLIP"
+        },
+        {
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        },
+        {
+          "name": "strength_clip",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_clip"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": []
+        },
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "minimax_h3_ref_lora_rank_256_bf16.safetensors",
+        1.0100000000000002,
+        1
+      ]
+    },
+    {
+      "id": 128,
+      "type": "CLIPLoader",
+      "pos": [
+        -1490,
+        5090
+      ],
+      "size": [
+        640,
+        120
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          }
+        },
+        {
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            337
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ]
+    },
+    {
+      "id": 177,
+      "type": "LoadAudio",
+      "pos": [
+        28.52201271057129,
+        6055.4931640625
+      ],
+      "size": [
+        270,
+        136
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 11,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "音频",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            333
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "None",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 115,
+      "type": "ResolutionSelector",
+      "pos": [
+        -1491.775146484375,
+        5690.34912109375
+      ],
+      "size": [
+        270,
+        170
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 12,
+      "mode": 0,
+      "showAdvanced": false,
+      "inputs": [
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "megapixels",
+          "name": "megapixels",
+          "type": "FLOAT",
+          "widget": {
+            "name": "megapixels"
+          }
+        },
+        {
+          "label": "multiple",
+          "name": "multiple",
+          "type": "INT",
+          "widget": {
+            "name": "multiple"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "links": [
+            276
+          ]
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "links": [
+            277
+          ]
+        }
+      ],
+      "title": "Resolution Selector (Size)",
+      "properties": {
+        "Node name for S&R": "ResolutionSelector",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "9:16 (Portrait Widescreen)",
+        0.6000000000000001,
+        16
+      ]
+    },
+    {
+      "id": 132,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -1487.498046875,
+        5929.39306640625
+      ],
+      "size": [
+        270,
+        70
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "FLOAT",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "FLOAT",
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            261,
+            374
+          ]
+        }
+      ],
+      "title": "Float (Duration)时间",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        15
+      ]
+    },
+    {
+      "id": 141,
+      "type": "LoadImage",
+      "pos": [
+        18.197256088256836,
+        5675.50146484375
+      ],
+      "size": [
+        290,
+        330
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 14,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            283
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "87db664cf55ec66e7d99a8354107b97feed81df59e17d9e78fc3d2d6a326ae6e.jpg",
+        "image"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 139,
+      "type": "LoadImage",
+      "pos": [
+        -319.81243896484375,
+        5680.1591796875
+      ],
+      "size": [
+        290,
+        330
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            282,
+            376
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "abf89de5cf0f32fe5a760c26dc66e2a6ab46096c8b4119350f6fdddb9aa86bde.png",
+        "image"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 145,
+      "type": "SetNode",
+      "pos": [
+        37.816566467285156,
+        6244.93896484375
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": false,
+        "pinned": true
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "link": 285
+        }
+      ],
+      "outputs": [
+        {
+          "label": "输出",
+          "name": "INT",
+          "type": "INT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SetNode",
+        "aux_id": "SetNode",
+        "previousName": "宽（1）",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "宽（1）"
+      ],
+      "color": "#1b4669",
+      "bgcolor": "#29699c"
+    },
+    {
+      "id": 143,
+      "type": "LoadVideoUI",
+      "pos": [
+        -1083.5596923828125,
+        5698.33447265625
+      ],
+      "size": [
+        690,
+        740
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "video",
+          "name": "video",
+          "type": "STRING",
+          "widget": {
+            "name": "video"
+          }
+        },
+        {
+          "label": "start_time",
+          "name": "start_time",
+          "type": "FLOAT",
+          "widget": {
+            "name": "start_time"
+          }
+        },
+        {
+          "label": "end_time",
+          "name": "end_time",
+          "type": "FLOAT",
+          "widget": {
+            "name": "end_time"
+          }
+        },
+        {
+          "label": "duration",
+          "name": "duration",
+          "type": "FLOAT",
+          "widget": {
+            "name": "duration"
+          }
+        },
+        {
+          "label": "start_frame",
+          "name": "start_frame",
+          "type": "INT",
+          "widget": {
+            "name": "start_frame"
+          }
+        },
+        {
+          "label": "end_frame",
+          "name": "end_frame",
+          "type": "INT",
+          "widget": {
+            "name": "end_frame"
+          }
+        },
+        {
+          "label": "duration_frames",
+          "name": "duration_frames",
+          "type": "INT",
+          "widget": {
+            "name": "duration_frames"
+          }
+        },
+        {
+          "label": "resize_method",
+          "name": "resize_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "resize_method"
+          }
+        },
+        {
+          "label": "custom_width",
+          "name": "custom_width",
+          "type": "INT",
+          "widget": {
+            "name": "custom_width"
+          }
+        },
+        {
+          "label": "custom_height",
+          "name": "custom_height",
+          "type": "INT",
+          "widget": {
+            "name": "custom_height"
+          }
+        },
+        {
+          "label": "frame_rate",
+          "name": "frame_rate",
+          "type": "INT",
+          "widget": {
+            "name": "frame_rate"
+          }
+        },
+        {
+          "label": "display_mode",
+          "name": "display_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "display_mode"
+          }
+        },
+        {
+          "label": "crop_x",
+          "name": "crop_x",
+          "type": "FLOAT",
+          "widget": {
+            "name": "crop_x"
+          }
+        },
+        {
+          "label": "crop_y",
+          "name": "crop_y",
+          "type": "FLOAT",
+          "widget": {
+            "name": "crop_y"
+          }
+        },
+        {
+          "label": "crop_w",
+          "name": "crop_w",
+          "type": "FLOAT",
+          "widget": {
+            "name": "crop_w"
+          }
+        },
+        {
+          "label": "crop_h",
+          "name": "crop_h",
+          "type": "FLOAT",
+          "widget": {
+            "name": "crop_h"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            287,
+            372
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            375
+          ]
+        },
+        {
+          "label": "duration",
+          "name": "duration",
+          "type": "FLOAT",
+          "links": [
+            373
+          ]
+        },
+        {
+          "label": "frame_count",
+          "name": "frame_count",
+          "type": "INT"
+        }
+      ],
+      "title": "参考《视频0》",
+      "properties": {
+        "Node name for S&R": "LoadVideoUI",
+        "widget_ue_connectable": {},
+        "__load_video_ui_trim": {
+          "video": "1786523417604_7670858116296183053__1_.mp4",
+          "start_time": 0,
+          "end_time": 14.53,
+          "duration": 14.53,
+          "start_frame": 0,
+          "end_frame": 436,
+          "duration_frames": 436,
+          "frame_rate": 30,
+          "display_mode": "seconds"
+        },
+        "__load_video_ui_state": {
+          "display_mode": "seconds"
+        }
+      },
+      "widgets_values": [
+        "1786523417604_7670858116296183053__1_.mp4",
+        0,
+        14.53,
+        14.53,
+        0,
+        436,
+        436,
+        "maintain aspect ratio",
+        0,
+        0,
+        30,
+        "seconds",
+        0,
+        0,
+        1,
+        1,
+        null,
+        ""
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 125,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        167.244140625,
+        5092.4296875
+      ],
+      "size": [
+        230,
+        140
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "噪波生成",
+          "name": "noise",
+          "type": "NOISE",
+          "link": 253
+        },
+        {
+          "label": "引导",
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 254
+        },
+        {
+          "label": "采样器",
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 255
+        },
+        {
+          "label": "Sigmas",
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 256
+        },
+        {
+          "label": "Latent",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 271
+        }
+      ],
+      "outputs": [
+        {
+          "label": "输出",
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            280,
+            281
+          ]
+        },
+        {
+          "label": "降噪输出",
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 181,
+      "type": "ModelAttentionBackend",
+      "pos": [
+        -1108.14208984375,
+        4555.5830078125
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 361
+        },
+        {
+          "label": "attention",
+          "name": "attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "attention"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            360
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelAttentionBackend",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "pytorch attention"
+      ]
+    },
+    {
+      "id": 182,
+      "type": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+      "pos": [
+        -812.5401000976562,
+        4420.5048828125
+      ],
+      "size": [
+        357.1148376464844,
+        26
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 353
+        }
+      ],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            367
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3MemoryEfficientSageAttentionPatch",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 178,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -1103.1583251953125,
+        4419.75341796875
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "模型",
+          "name": "model",
+          "type": "MODEL",
+          "link": 360
+        },
+        {
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "模型",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            353
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+        1.0100000000000002
+      ]
+    },
+    {
+      "id": 138,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -1495.77587890625,
+        6046.95458984375
+      ],
+      "size": [
+        370,
+        390
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "旧手写提示词（备份，已断开）",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Create a highly realistic 9:16 vertical TikTok-style UGC video using <Product Image 1> as the exact visual reference for the Gensz smart glasses.\n\nCORE STORY:\n\nA young American man is hiking on a beautiful mountain trail while wearing Gensz smart AI glasses.\n\nDuring the hike, he suddenly notices a small, unusual-looking animal sitting between the rocks.\n\nHe has never seen it before.\n\nWithout taking out his phone, he looks directly at the animal and naturally says:\n\n\"Hi Luma, what animal is that?\"\n\nLuma visually analyzes what he is looking at and answers through the glasses:\n\n\"That's an American pika. It's a small mountain mammal that lives in cool, rocky alpine areas.\"\n\nThe user is genuinely surprised and impressed.\n\nThe entire interaction must feel spontaneous, natural, and realistic.\n\nThe key product message is:\n\nSEE SOMETHING UNFAMILIAR →\nASK \"HI LUMA\" →\nLUMA IDENTIFIES IT →\nGET THE ANSWER HANDS-FREE.\n\nNo phone needed.\n\n---\n\nVIDEO STYLE:\n\nAuthentic American TikTok UGC.\n\nRealistic outdoor hiking vlog.\n\nYoung American male, around 25–30 years old.\n\nCasual hiking outfit:\nlightweight hiking shirt,\nhiking pants,\nsmall backpack,\ntrail shoes.\n\nHe is wearing the exact Gensz smart glasses from <Product Image 1>.\n\nNatural, adventurous personality.\n\nNo exaggerated influencer acting.\n\nMountain environment in the United States.\n\nHigh-altitude rocky trail.\n\nPine trees in the distance.\n\nLarge gray rocks.\n\nBeautiful mountain valley in the background.\n\nClear daytime weather.\n\nNatural wind.\n\n9:16 vertical.\n\nRealistic 4K appearance.\n\nNatural skin texture.\n\nRealistic sunlight.\n\nNatural shadows.\n\nSlight handheld smartphone movement.\n\nNatural autofocus.\n\nRealistic motion blur.\n\nAuthentic outdoor ambience:\nwind,\nbirds,\nfootsteps on gravel,\ndistant nature sounds.\n\nThe video should feel like a real friend filming a hiking trip.\n\n---\n\nPRODUCT CONSISTENCY:\n\nThe Gensz smart glasses must exactly match <Product Image 1>.\n\nPreserve the exact:\n\nframe geometry,\nlens shape,\ncamera module position,\ntemple thickness,\nhinges,\nmaterial,\ncolor,\nsurface texture,\nand overall proportions.\n\nDo not redesign the glasses.\n\nDo not make them futuristic.\n\nDo not add glowing lights.\n\nDo not add extra cameras.\n\nThe glasses should look like normal stylish eyewear suitable for hiking.\n\n---\n\nSCENE 1 — HIKING UP THE MOUNTAIN\n\nStart with a natural handheld follow shot.\n\nThe young American man is walking uphill on a rocky mountain trail.\n\nHis friend is filming him vertically from a few steps behind.\n\nThe man is breathing slightly heavier from hiking, but still relaxed.\n\nNatural movement.\n\nReal footsteps.\n\nSmall backpack moving naturally with his body.\n\nThe camera briefly captures the mountain scenery.\n\nThe man looks around at the landscape.\n\nHe says casually:\n\n\"Man, this trail is actually insane.\"\n\nHis friend behind the camera replies:\n\n\"Yeah, but this view is worth it.\"\n\nThe man laughs slightly.\n\nHe continues hiking.\n\nDo not make this feel scripted.\n\n---\n\nSCENE 2 — DISCOVERING THE ANIMAL\n\nAs the man walks near a cluster of large rocks, he suddenly slows down.\n\nHe notices movement between the rocks.\n\nThe camera naturally follows his line of sight.\n\nA small American pika is sitting on a rock.\n\nThe animal should look realistic:\n\nsmall,\nround body,\nshort rounded ears,\ngray-brown fur,\ncompact face,\nrealistic proportions.\n\nIt should be clearly different from a rabbit or squirrel.\n\nThe pika looks around naturally and makes small movements.\n\nThe hiker stops.\n\nHe looks closely.\n\nHe says:\n\n\"Wait.\"\n\nShort pause.\n\n\"What is that?\"\n\nHis friend moves the camera slightly toward the animal.\n\nFriend:\n\n\"I have no idea.\"\n\nThe hiker leans forward slightly.\n\nHe stays a respectful distance away.\n\nHe looks directly at the animal through the Gensz smart glasses.\n\n---\n\nSCENE 3 — ACTIVATING LUMA\n\nMedium close-up from the side.\n\nKeep both the hiker and the direction of the animal visually connected.\n\nThe hiker does NOT take out his phone.\n\nHe simply looks at the animal and says naturally:\n\n\"Hi Luma, what animal is that?\"\n\nShort realistic pause.\n\nLuma visually identifies the animal through the glasses.\n\nNo scanning animation.\n\nNo graphic interface.\n\nNo text.\n\nNo hologram.\n\nLuma responds through audio:\n\n\"That's an American pika. It's a small mountain mammal that lives in cool, rocky alpine areas.\"\n\nLuma's voice should sound:\n\nclear,\ncalm,\nnatural,\nmodern,\nhelpful.\n\nThe answer should sound like it is being heard through the glasses.\n\nNot like an external narrator.\n\n---\n\nSCENE 4 — NATURAL SURPRISE\n\nThe hiker immediately reacts.\n\nHe looks back at his friend filming.\n\nHiker:\n\n\"Wait, that's a pika?\"\n\nHe looks back toward the animal.\n\nHiker:\n\n\"I've literally never seen one of these before.\"\n\nHis friend says:\n\n\"You knew that just from looking at it?\"\n\nThe hiker points lightly toward his glasses.\n\nHiker:\n\n\"No, Luma did.\"\n\nNatural laugh.\n\nThe friend:\n\n\"That's actually crazy.\"\n\nThe hiker smiles.\n\nHiker:\n\n\"Yeah, that's actually super useful out here.\"\n\nKeep the acting subtle and believable.\n\n---\n\nSCENE 5 — ASKING A FOLLOW-UP QUESTION\n\nThe pika is still visible nearby.\n\nThe hiker remains curious.\n\nHe looks directly toward it again.\n\nHiker:\n\n\"Hi Luma, why does it live all the way up here?\"\n\nShort pause.\n\nLuma responds:\n\n\"Pikas prefer cold mountain environments and usually live around rocky slopes where they can hide from predators.\"\n\nThe hiker nods naturally.\n\nHiker:\n\n\"Okay, that's actually really cool.\"\n\nHis friend asks:\n\n\"So you're basically getting a tour guide through your glasses?\"\n\nThe hiker laughs.\n\nHiker:\n\n\"Pretty much.\"\n\nThis should feel like a spontaneous realization, not an advertisement line.\n\n---\n\nSCENE 6 — CONTINUING THE HIKE\n\nThe hikers continue walking up the same trail.\n\nDo not change location dramatically.\n\nThe main character keeps wearing the same glasses.\n\nThe camera walks beside him.\n\nHe says:\n\n\"This is the kind of thing I actually like about these.\"\n\nFriend:\n\n\"What?\"\n\nHiker:\n\n\"Like, I don't have to stop, pull my phone out, search for something, figure out what I'm looking at...\"\n\nHe gestures naturally toward the environment.\n\nHiker:\n\n\"I can literally just ask.\"\n\nFriend:\n\n\"That's nice when you're hiking.\"\n\nHiker:\n\n\"Exactly.\"\n\nNatural walking continues.\n\n---\n\nSCENE 7 — GENsz PRODUCT MOMENT\n\nThe camera moves slightly closer while they continue hiking.\n\nThe hiker says casually:\n\n\"These are the Gensz smart glasses.\"\n\nHe does not stop and pose.\n\nHe continues walking naturally.\n\nHiker:\n\n\"Luma can actually see what I'm looking at, so if I find something weird out here, I can just ask what it is.\"\n\nHe smiles.\n\nHiker:\n\n\"Honestly, that's way more useful than I expected.\"\n\nThe friend says:\n\n\"And you didn't touch your phone once.\"\n\nHiker:\n\n\"Exactly.\"\n\n---\n\nSCENE 8 — SECOND DISCOVERY / ENDING\n\nAs they continue walking, the hiker suddenly notices something else farther up the trail.\n\nMaybe a large bird circling above the mountain or another unusual animal silhouette.\n\nHe stops briefly.\n\nHe looks upward.\n\nHis expression immediately becomes curious again.\n\nHiker:\n\n\"Oh, wait.\"\n\nHis friend laughs because he knows what is about to happen.\n\nHiker:\n\n\"Hi Luma...\"\n\nFriend:\n\n\"Here we go again.\"\n\nBoth laugh naturally.\n\nThe hiker starts asking:\n\n\"What kind of bird is—\"\n\nCut naturally before the sentence finishes.\n\nEnd like a real TikTok hiking clip.\n\nNo advertisement end card.\n\nNo product poster.\n\nNo logo screen.\n\nNo text.\n\n---\n\nCRITICAL LUMA INTERACTION LOGIC:\n\nThe Gensz glasses can visually understand what the wearer is looking at.\n\nThe user activates the assistant verbally.\n\nCorrect interaction:\n\nUser looks directly at the animal.\n\nUser:\n\n\"Hi Luma, what animal is that?\"\n\nLuma visually analyzes the animal.\n\nLuma:\n\n\"That's an American pika. It's a small mountain mammal that lives in cool, rocky alpine areas.\"\n\nThe user may then ask a natural follow-up question:\n\n\"Hi Luma, why does it live all the way up here?\"\n\nLuma:\n\n\"Pikas prefer cold mountain environments and usually live around rocky slopes where they can hide from predators.\"\n\nAll AI information is communicated through AUDIO ONLY.\n\n---\n\nIMPORTANT CAMERA DIRECTION:\n\nThe viewer must clearly understand what the smart glasses are seeing.\n\nWhen the hiker notices the animal:\n\nfirst show the hiker looking toward the rocks,\n\nthen naturally show the pika from his viewing direction,\n\nthen return to the hiker as he asks:\n\n\"Hi Luma, what animal is that?\"\n\nAfter Luma answers, briefly show the same pika again.\n\nDo not switch to a different animal.\n\nDo not change the animal's appearance.\n\nDo not randomly cut to stock wildlife footage.\n\nThe animal and the human must feel like they are genuinely in the same physical environment.\n\n---\n\nAMERICAN ENGLISH PERFORMANCE:\n\nAll English dialogue should sound like natural conversational American English.\n\nRecommended delivery:\n\n\"Wait. What is that?\"\n\ncurious and slightly surprised.\n\n\"Hi Luma, what animal is that?\"\n\ncasual and natural, not shouted.\n\n\"Wait, that's a pika?\"\n\ngenuine surprise.\n\n\"I've literally never seen one of these before.\"\n\nnatural American TikTok-style speech.\n\n\"Yeah, that's actually super useful out here.\"\n\nrelaxed approval.\n\n\"Honestly, that's way more useful than I expected.\"\n\ncasual product realization.\n\nUse realistic pauses,\nsmall breaths,\nnatural laughter,\naccurate lip synchronization,\nsubtle facial expressions.\n\nNo professional commercial voice-over.\n\nNo robotic human acting.\n\n---\n\nSTRICT NO-TEXT REQUIREMENTS:\n\nABSOLUTELY NO SUBTITLES.\n\nNO CAPTIONS.\n\nNO CLOSED CAPTIONS.\n\nNO AUTO-GENERATED SUBTITLES.\n\nNO WORDS ON SCREEN.\n\nNO ANIMAL LABEL.\n\nNO SPECIES NAME TEXT.\n\nNO AI ANSWER TEXT.\n\nNO FLOATING INFORMATION.\n\nNO AR MARKERS.\n\nNO ANIMAL TARGET BOX.\n\nNO SCANNING EFFECT.\n\nNO HOLOGRAM.\n\nNO SCI-FI HUD.\n\nNO TEXT INSIDE THE GLASSES.\n\nNO PRODUCT FEATURE TEXT.\n\nNO SOCIAL MEDIA UI.\n\nNO WATERMARK.\n\nLuma communicates through AUDIO ONLY.\n\n---\n\nNEGATIVE CONSTRAINTS:\n\nNo phone usage.\n\nNo searching on a smartphone.\n\nNo taking photos to identify the animal.\n\nNo typing.\n\nNo fake hologram.\n\nNo scanning beam.\n\nNo futuristic graphics.\n\nNo glowing glasses.\n\nNo animal deformation.\n\nNo oversized pika.\n\nNo rabbit-like pika.\n\nNo animal changing species.\n\nNo animal teleportation.\n\nNo character changes.\n\nNo face changes.\n\nNo clothing changes.\n\nNo backpack changes.\n\nNo product deformation.\n\nNo glasses disappearing.\n\nNo extra camera modules.\n\nNo extra fingers.\n\nNo distorted hands.\n\nNo warped face.\n\nNo unrealistic mountain scenery.\n\nNo sudden weather changes.\n\nNo random location changes.\n\nNo studio lighting.\n\nNo luxury commercial style.\n\nNo overly cinematic advertisement feeling.\n\n---\n\nFINAL TARGET:\n\nThe final video should feel like a real American hiking TikTok where a young man unexpectedly sees an unusual wild animal on a mountain trail.\n\nHe does not know what it is.\n\nInstead of taking out his phone, he simply looks at it and says:\n\n\"Hi Luma, what animal is that?\"\n\nLuma immediately identifies it:\n\n\"That's an American pika. It's a small mountain mammal that lives in cool, rocky alpine areas.\"\n\nThe hiker is genuinely impressed because the interaction is fast, natural, visual, and completely hands-free.\n\nThe audience should immediately understand that Gensz smart glasses can help identify unfamiliar things in the real world simply by looking at them and asking Luma.\n\nThe entire video must feel:\n\nadventurous,\nnatural,\nuseful,\nhands-free,\nrealistic,\nand native to American TikTok UGC.\n\nNo subtitles or on-screen text at any moment.\n"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 92,
+      "type": "SaveVideo",
+      "pos": [
+        1199.5936279296875,
+        4929.5009765625
+      ],
+      "size": [
+        210,
+        542.5946044921875
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "video",
+          "name": "video",
+          "type": "VIDEO",
+          "link": 260
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "label": "format",
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          }
+        },
+        {
+          "label": "codec",
+          "name": "codec",
+          "type": "COMFY_DYNAMICCOMBO_V3",
+          "widget": {
+            "name": "codec"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "video_url",
+          "name": "video_url",
+          "type": "STRING"
+        },
+        {
+          "label": "video",
+          "name": "video",
+          "type": "VIDEO"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "video/MiniMax_H3",
+        "auto",
+        "auto"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 130,
+      "type": "CreateVideo",
+      "pos": [
+        814.284912109375,
+        4929.7197265625
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 371
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 259
+        },
+        {
+          "label": "fps",
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          }
+        },
+        {
+          "label": "bit_depth",
+          "name": "bit_depth",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "bit_depth"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VIDEO",
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            260
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        24,
+        10
+      ]
+    },
+    {
+      "id": 122,
+      "type": "VAEDecode",
+      "pos": [
+        459.35784912109375,
+        4931.28955078125
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {
+        "collapsed": false,
+        "pinned": true
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Latent",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 280
+        },
+        {
+          "label": "VAE",
+          "name": "vae",
+          "type": "VAE",
+          "link": 251
+        }
+      ],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            371
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 121,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        456.92926025390625,
+        5053.7177734375
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {
+        "collapsed": false,
+        "pinned": true
+      },
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Latent",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 281
+        },
+        {
+          "label": "VAE",
+          "name": "vae",
+          "type": "VAE",
+          "link": 250
+        }
+      ],
+      "outputs": [
+        {
+          "label": "音频",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            259
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecodeAudio",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 186,
+      "type": "H3LocalVideoPrompt",
+      "pos": [
+        -2100,
+        6500
+      ],
+      "size": [
+        520,
+        500
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frames",
+          "type": "IMAGE",
+          "link": 372
+        },
+        {
+          "name": "source_duration",
+          "type": "FLOAT",
+          "link": 373
+        },
+        {
+          "name": "target_duration",
+          "type": "FLOAT",
+          "link": 374
+        },
+        {
+          "name": "model_folder",
+          "type": "STRING",
+          "widget": {
+            "name": "model_folder"
+          }
+        },
+        {
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "name": "max_frames",
+          "type": "INT",
+          "widget": {
+            "name": "max_frames"
+          }
+        },
+        {
+          "name": "max_side",
+          "type": "INT",
+          "widget": {
+            "name": "max_side"
+          }
+        },
+        {
+          "name": "max_new_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_new_tokens"
+          }
+        },
+        {
+          "name": "transcribe",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "transcribe"
+          }
+        },
+        {
+          "name": "whisper_folder",
+          "type": "STRING",
+          "widget": {
+            "name": "whisper_folder"
+          }
+        },
+        {
+          "name": "direction",
+          "type": "STRING",
+          "widget": {
+            "name": "direction"
+          }
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "shape": 7,
+          "link": 375
+        },
+        {
+          "name": "product_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 376
+        }
+      ],
+      "outputs": [
+        {
+          "name": "h3_prompt",
+          "type": "STRING",
+          "links": [
+            377
+          ]
+        },
+        {
+          "name": "analysis_report",
+          "type": "STRING",
+          "links": [
+            378
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3LocalVideoPrompt"
+      },
+      "widgets_values": [
+        "Qwen3-VL-4B-Instruct",
+        "cpu",
+        12,
+        448,
+        1400,
+        false,
+        "faster-whisper-small",
+        "Create a professional English H3 prompt following the reference video action order and camera pacing. Preserve the separately connected product image exactly. Do not invent product functions or nationality. No subtitles, captions or watermarks."
+      ]
+    },
+    {
+      "id": 187,
+      "type": "H3PromptReview",
+      "pos": [
+        -1500,
+        6500
+      ],
+      "size": [
+        600,
+        520
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "generated_prompt",
+          "type": "STRING",
+          "link": 377
+        },
+        {
+          "name": "analysis_report",
+          "type": "STRING",
+          "link": 378
+        },
+        {
+          "name": "manual_override",
+          "type": "STRING",
+          "widget": {
+            "name": "manual_override"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "final_prompt",
+          "type": "STRING",
+          "links": [
+            379
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3PromptReview"
+      },
+      "widgets_values": [
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      250,
+      120,
+      0,
+      121,
+      1,
+      "VAE"
+    ],
+    [
+      251,
+      119,
+      0,
+      122,
+      1,
+      "VAE"
+    ],
+    [
+      253,
+      129,
+      0,
+      125,
+      0,
+      "NOISE"
+    ],
+    [
+      254,
+      126,
+      0,
+      125,
+      1,
+      "GUIDER"
+    ],
+    [
+      255,
+      123,
+      0,
+      125,
+      2,
+      "SAMPLER"
+    ],
+    [
+      256,
+      124,
+      0,
+      125,
+      3,
+      "SIGMAS"
+    ],
+    [
+      259,
+      121,
+      0,
+      130,
+      1,
+      "AUDIO"
+    ],
+    [
+      260,
+      130,
+      0,
+      92,
+      0,
+      "VIDEO"
+    ],
+    [
+      261,
+      132,
+      0,
+      131,
+      0,
+      "FLOAT"
+    ],
+    [
+      270,
+      136,
+      0,
+      126,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      271,
+      136,
+      1,
+      125,
+      4,
+      "LATENT"
+    ],
+    [
+      273,
+      119,
+      0,
+      136,
+      1,
+      "VAE"
+    ],
+    [
+      274,
+      120,
+      0,
+      136,
+      2,
+      "VAE"
+    ],
+    [
+      275,
+      131,
+      1,
+      136,
+      15,
+      "INT"
+    ],
+    [
+      276,
+      115,
+      0,
+      136,
+      13,
+      "INT"
+    ],
+    [
+      277,
+      115,
+      1,
+      136,
+      14,
+      "INT"
+    ],
+    [
+      280,
+      125,
+      0,
+      122,
+      0,
+      "LATENT"
+    ],
+    [
+      281,
+      125,
+      0,
+      121,
+      0,
+      "LATENT"
+    ],
+    [
+      282,
+      139,
+      0,
+      136,
+      3,
+      "IMAGE"
+    ],
+    [
+      283,
+      141,
+      0,
+      136,
+      4,
+      "IMAGE"
+    ],
+    [
+      285,
+      144,
+      3,
+      145,
+      0,
+      "*"
+    ],
+    [
+      286,
+      144,
+      4,
+      146,
+      0,
+      "*"
+    ],
+    [
+      287,
+      143,
+      0,
+      144,
+      0,
+      "IMAGE"
+    ],
+    [
+      288,
+      144,
+      0,
+      136,
+      7,
+      "IMAGE"
+    ],
+    [
+      318,
+      171,
+      0,
+      170,
+      0,
+      "MODEL"
+    ],
+    [
+      331,
+      175,
+      0,
+      136,
+      5,
+      "IMAGE"
+    ],
+    [
+      333,
+      177,
+      0,
+      136,
+      10,
+      "AUDIO"
+    ],
+    [
+      337,
+      128,
+      0,
+      136,
+      0,
+      "CLIP"
+    ],
+    [
+      353,
+      178,
+      0,
+      182,
+      0,
+      "MODEL"
+    ],
+    [
+      360,
+      181,
+      0,
+      178,
+      0,
+      "MODEL"
+    ],
+    [
+      361,
+      127,
+      0,
+      181,
+      0,
+      "MODEL"
+    ],
+    [
+      363,
+      170,
+      0,
+      126,
+      0,
+      "MODEL"
+    ],
+    [
+      364,
+      170,
+      0,
+      124,
+      0,
+      "MODEL"
+    ],
+    [
+      367,
+      182,
+      0,
+      171,
+      0,
+      "MODEL"
+    ],
+    [
+      371,
+      122,
+      0,
+      130,
+      0,
+      "IMAGE"
+    ],
+    [
+      372,
+      143,
+      0,
+      186,
+      0,
+      "IMAGE"
+    ],
+    [
+      373,
+      143,
+      2,
+      186,
+      1,
+      "FLOAT"
+    ],
+    [
+      374,
+      132,
+      0,
+      186,
+      2,
+      "FLOAT"
+    ],
+    [
+      375,
+      143,
+      1,
+      186,
+      11,
+      "AUDIO"
+    ],
+    [
+      376,
+      139,
+      0,
+      186,
+      12,
+      "IMAGE"
+    ],
+    [
+      377,
+      186,
+      0,
+      187,
+      0,
+      "STRING"
+    ],
+    [
+      378,
+      186,
+      1,
+      187,
+      1,
+      "STRING"
+    ],
+    [
+      379,
+      187,
+      0,
+      136,
+      12,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Models",
+      "bounding": [
+        -1520,
+        4840,
+        700,
+        670
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "采样",
+      "bounding": [
+        -280,
+        4840,
+        690,
+        670
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {
+        "pinned": true
+      }
+    },
+    {
+      "id": 3,
+      "title": "条件",
+      "bounding": [
+        -790,
+        4840,
+        480,
+        670
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {
+        "pinned": true
+      }
+    },
+    {
+      "id": 4,
+      "title": "解码",
+      "bounding": [
+        440,
+        4840,
+        670,
+        670
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {
+        "pinned": true
+      }
+    },
+    {
+      "id": 5,
+      "title": "User Inputs",
+      "bounding": [
+        -1515.0784912109375,
+        5523.48486328125,
+        2192.1953125,
+        936.0420532226562
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "Group",
+      "bounding": [
+        1143.76318359375,
+        4841.52294921875,
+        324.0789794921875,
+        663.7493286132812
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {
+        "pinned": true
+      }
+    },
+    {
+      "id": 7,
+      "title": "加速",
+      "bounding": [
+        -1503.9486083984375,
+        4368.89892578125,
+        1099.2425537109375,
+        448.4901428222656
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "整合",
+      "bounding": [
+        -1523.476806640625,
+        4368.60546875,
+        3001.31884765625,
+        2079.72900390625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "本地视频分析 → 英文 H3 提示词 → 预览/覆盖",
+      "bounding": [
+        -2150,
+        6440,
+        1290,
+        650
+      ],
+      "color": "#385c76",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "VHS_KeepIntermediate": true,
+    "links_added_by_ue": [],
+    "KKvideo_latentpreview": false,
+    "VHS_MetadataImage": true,
+    "ue_links": [],
+    "KKvideo_latentpreviewrate": 0,
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "pixaromaGroups": [],
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "ds": {
+      "scale": 0.7,
+      "offset": [
+        2200,
+        -6300
+      ]
+    }
+  },
+  "version": 0.4
+}
